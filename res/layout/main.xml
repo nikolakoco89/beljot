@@ -2,28 +2,28 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="horizontal" >
+    android:orientation="vertical" >
 
     <Button
         android:id="@+id/button1"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:layout_gravity="center_vertical"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
         android:text="@string/new_game_string"/>
     <Button
         android:id="@+id/button2"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:layout_gravity="center_vertical"
-        android:text="Button" />
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="@string/history_string" />
     <Button
         android:id="@+id/button3"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_weight="5"
-        android:layout_gravity="center | bottom"
-        android:text="Button" />
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="@string/settings_string" />
 
 </LinearLayout>
