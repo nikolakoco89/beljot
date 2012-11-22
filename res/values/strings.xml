@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, BeljotActivity!</string>
+    <string name="app_name">Beljot</string>
+    <string name="new_game_string">New Game</string>
+    <string name="history_string">History</string>
+    <string name="settings_string">Settings</string>
+
+</resources>
