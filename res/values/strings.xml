@@ -6,5 +6,14 @@
     <string name="history_string">History</string>
     <string name="settings_string">Settings</string>
     <string name="resume_game_string">Resume Game</string>
+    <string name="first_team_string">Team 1</string>
+    <string name="second_team_string">Team 2</string>
+    <string name="name_entry_dialog_string">Enter the names of the teams</string>
+    <string name="information_string">Information</string>
+    <string name="start_button_string">Start</string>
+    <string name="cancel_button_string">Cancel</string>
+    <string name="on_back_key_dialog_message_string">Please choose to end game and save or save to resume later</string>
+    <string name="end_game_button_string">End Game</string>
+    <string name="save_to_resume_button_string">Save to resume</string>
 
 </resources>
