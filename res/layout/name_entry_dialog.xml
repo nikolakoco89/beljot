@@ -7,8 +7,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/first_team_string"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:text="@string/first_team_string" />
 
     <EditText
         android:id="@+id/firstTeamEditText"
@@ -22,8 +21,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/second_team_string"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:text="@string/second_team_string" />
 
     <EditText
         android:id="@+id/secondTeamEditText"

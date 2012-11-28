@@ -3,14 +3,13 @@ package nikolakoco.beljot;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.sax.TextElementListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -39,13 +38,12 @@ public class GameActivity extends Activity {
 
 		Bundle bundle = getIntent().getExtras();
 		boolean resume_game = bundle.getBoolean("resume_game");
+		Context context = getApplicationContext();
+		prefs = PreferenceManager.getDefaultSharedPreferences(context);
 		if(resume_game) {
-			Context context = getApplicationContext();
-			prefs = PreferenceManager.getDefaultSharedPreferences(context);
 			updateGameFromPreferences();
 		}
 		else {
-
 			showDialog(NAMES_ENTRY_DIALOG);
 		}
 	}
@@ -85,6 +83,11 @@ public class GameActivity extends Activity {
 				
 				public void onClick(DialogInterface dialog, int which) {
 					// TODO Save to database
+					Editor editor = prefs.edit();
+					editor.remove(FIRST_TEAM_NAME);
+					editor.remove(SECOND_TEAM_NAME);
+					editor.commit();
+					finish();
 				}
 			});
 			onBackKeyDialog.setNeutralButton(R.string.save_to_resume_button_string, new DialogInterface.OnClickListener() {
@@ -93,14 +96,16 @@ public class GameActivity extends Activity {
 					// TODO Save to shared preferences
 					Editor editor = prefs.edit();
 					editor.putString(FIRST_TEAM_NAME, team1_name_txt.getText().toString());
-					editor.putString(FIRST_TEAM_NAME, team1_name_txt.toString());
+					editor.putString(SECOND_TEAM_NAME, team2_name_txt.getText().toString());
+					editor.commit();
+					if(prefs.contains(FIRST_TEAM_NAME) && prefs.contains(SECOND_TEAM_NAME))
+						finish();
 				}
 			});
 			onBackKeyDialog.setNegativeButton(R.string.cancel_button_string, new DialogInterface.OnClickListener() {
 				
 				public void onClick(DialogInterface dialog, int which) {
-					// TODO Auto-generated method stub
-					
+					// Do nothing
 				}
 			});
 			return onBackKeyDialog.create();
@@ -111,11 +116,17 @@ public class GameActivity extends Activity {
 	@Override
 	public void onBackPressed() {
 		showDialog(ON_BACK_KEY_DIALOG);
-		super.onBackPressed();
+//		super.onBackPressed();
 	}
 	
 	public void updateGameFromPreferences() {
 		team1_name_txt.setText(prefs.getString(FIRST_TEAM_NAME, "TEAM 1"));
 		team2_name_txt.setText(prefs.getString(SECOND_TEAM_NAME, "TEAM 2"));
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		super.onActivityResult(requestCode, resultCode, data);
 	}
 }
