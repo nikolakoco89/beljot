@@ -15,5 +15,6 @@
     <string name="on_back_key_dialog_message_string">Please choose to end game and save or save to resume later</string>
     <string name="end_game_button_string">End Game</string>
     <string name="save_to_resume_button_string">Save to resume</string>
+    <string name="name_validation_string">Please enter names for the teams</string>
 
 </resources>

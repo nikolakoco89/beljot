@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TableRow
+        android:id="@+id/table_scores_head"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+    </TableRow>
+
+    <TableLayout
+        android:id="@+id/table_scores_body"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="TextView"
+                android:textAppearance="?android:attr/textAppearanceMedium" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="TextView"
+                android:textAppearance="?android:attr/textAppearanceMedium" >
+            </TextView>
+        </TableRow>
+        
+    </TableLayout>
+
+</LinearLayout>
+-->
+
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/table_scores"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="5dp" >
+
+    <TableRow android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/pointsA1"
+            android:layout_height="wrap_content"
+            android:text="TEST1" />
+
+        <TextView
+            android:id="@+id/pointsB1"
+            android:layout_height="wrap_content"
+            android:text="TEST2" />
+
+    </TableRow>
+
+    
+    <TableRow android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/pointsA2"
+            android:layout_height="wrap_content"
+            android:text="TEST3" />
+
+        <TextView
+            android:id="@+id/pointsB2"
+            android:layout_height="wrap_content"
+            android:text="TEST4" />
+    </TableRow>
+    
+    
+    <TableRow android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/pointsA3"
+            android:layout_height="wrap_content"
+            android:text="TEST5" />
+
+        <TextView
+            android:id="@+id/pointsB3"
+            android:layout_height="wrap_content"
+            android:text="TEST6" />
+    </TableRow>
+    
+</TableLayout>

@@ -13,6 +13,7 @@
         android:id="@+id/firstTeamEditText"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:imeOptions="actionNext"
         android:ems="10" >
 
         <requestFocus />
@@ -27,6 +28,15 @@
         android:id="@+id/secondTeamEditText"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:imeOptions="actionDone"
         android:ems="10" />
+    
+    <TextView
+        android:id="@+id/validationWarningText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/name_validation_string"
+        android:visibility="invisible"
+        android:textColor="#ff0000" />
 
 </LinearLayout>

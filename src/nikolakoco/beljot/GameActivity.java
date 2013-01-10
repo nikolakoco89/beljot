@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -19,6 +20,7 @@ public class GameActivity extends Activity {
 
 	TextView team1_name_txt;
 	TextView team2_name_txt;
+	TextView validationWarningText;
 	EditText firstTeamEditText;
 	EditText secondTeamEditText;
 	static final private int NAMES_ENTRY_DIALOG = 1;
@@ -56,24 +58,45 @@ public class GameActivity extends Activity {
 			final View textEntryView = factory.inflate(R.layout.name_entry_dialog, null);
 			firstTeamEditText = (EditText)textEntryView.findViewById(R.id.firstTeamEditText);
 			secondTeamEditText = (EditText)textEntryView.findViewById(R.id.secondTeamEditText);
-			AlertDialog.Builder names_entry_dialog = new AlertDialog.Builder(this);
-			names_entry_dialog.setTitle(R.string.information_string);
-			names_entry_dialog.setMessage(R.string.name_entry_dialog_string);
-			names_entry_dialog.setView(textEntryView);
-			names_entry_dialog.setPositiveButton(R.string.start_button_string, new DialogInterface.OnClickListener() {
-
-				public void onClick(DialogInterface dialog, int which) {
-					team1_name_txt.setText(firstTeamEditText.getText());
-					team2_name_txt.setText(secondTeamEditText.getText());
+			validationWarningText = (TextView)textEntryView.findViewById(R.id.validationWarningText);
+			final AlertDialog names_entry_dialog = new AlertDialog.Builder(this)
+						.setMessage(R.string.name_entry_dialog_string)
+						.setView(textEntryView)
+						.setPositiveButton(R.string.start_button_string, new DialogInterface.OnClickListener() {
+							
+							public void onClick(DialogInterface dialog, int which) {
+								// TODO Auto-generated method stub
+								
+							}
+						})
+						.setNegativeButton(R.string.cancel_button_string, new DialogInterface.OnClickListener() {
+							
+							public void onClick(DialogInterface dialog, int which) {
+								finish();
+							}
+						})
+						.create();
+			names_entry_dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+				
+				public void onShow(DialogInterface dialog) {
+					Button b = names_entry_dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+					b.setOnClickListener(new View.OnClickListener() {
+						
+						public void onClick(View v) {
+							if((firstTeamEditText.getText().length() == 0) || (secondTeamEditText.getText().length() == 0)) {
+								validationWarningText.setVisibility(View.VISIBLE);
+							} else {
+								validationWarningText.setVisibility(View.INVISIBLE);
+								team1_name_txt.setText(firstTeamEditText.getText());
+								team2_name_txt.setText(secondTeamEditText.getText());
+								names_entry_dialog.dismiss();
+							} 
+						}
+					});
 				}
 			});
-			names_entry_dialog.setNegativeButton(R.string.cancel_button_string, new DialogInterface.OnClickListener() {
-
-				public void onClick(DialogInterface dialog, int which) {
-					finish();
-				}
-			});
-			return names_entry_dialog.create();
+			
+			return names_entry_dialog;
 		
 		case(ON_BACK_KEY_DIALOG):
 			AlertDialog.Builder onBackKeyDialog = new AlertDialog.Builder(this);

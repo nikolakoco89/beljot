@@ -24,6 +24,65 @@
             android:layout_alignParentTop="true"
             android:text="GAME2 ACTIVTY!" />
 
+        <!-- <include  layout="@layout/table" android:id="@+id/table_scores_whole" /> -->
+
+        <TableLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/table_scores"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/team1_name_txt" >
+
+            <!-- android:padding="5dp" -->
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/pointsA1"
+                    android:layout_height="wrap_content"
+                    android:text="TEST1ttyeyeryrtyrtyrtyre" />
+
+                <TextView
+                    android:id="@+id/pointsB1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="TEST2" />
+
+            </TableRow>
+
+        <!--     <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/pointsA2"
+                    android:layout_height="wrap_content"
+                    android:text="TEST3" />
+
+                <TextView
+                    android:id="@+id/pointsB2"
+                    android:layout_height="wrap_content"
+                    android:text="TEST4" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/pointsA3"
+                    android:layout_height="wrap_content"
+                    android:text="TEST5" />
+
+                <TextView
+                    android:id="@+id/pointsB3"
+                    android:layout_height="wrap_content"
+                    android:text="TEST4446" />
+            </TableRow> -->
+        </TableLayout>
+]
     </RelativeLayout>
 
 </LinearLayout>
