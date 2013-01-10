@@ -14,7 +14,9 @@
             android:id="@+id/team1_name_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="GAME ACTIVTY!" />
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:text="TEAM 1" />
 
         <TextView
             android:id="@+id/team2_name_txt"
@@ -22,7 +24,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:text="GAME2 ACTIVTY!" />
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:text="TEAM 2" />
 
         <!-- <include  layout="@layout/table" android:id="@+id/table_scores_whole" /> -->
 
@@ -42,12 +46,16 @@
                 <TextView
                     android:id="@+id/pointsA1"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="left"
                     android:text="TEST1ttyeyeryrtyrtyrtyre" />
 
                 <TextView
                     android:id="@+id/pointsB1"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
                     android:text="TEST2" />
 
             </TableRow>
