@@ -30,6 +30,10 @@
             android:label="@string/app_name"
             android:name=".SettingsActivity" >
         </activity>
+        <activity
+            android:label="@string/app_name"
+            android:name=".AddGameActivity" >
+        </activity>
     </application>
 
 </manifest>

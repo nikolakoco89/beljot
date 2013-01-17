@@ -10,19 +10,29 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class GameActivity extends Activity {
 
 	TextView team1_name_txt;
 	TextView team2_name_txt;
 	TextView validationWarningText;
+	TextView cell_item;
+	TextView cell_item2;
 	EditText firstTeamEditText;
 	EditText secondTeamEditText;
+	TableLayout table_scores;
+	Button add_new_game_btn;
 	static final private int NAMES_ENTRY_DIALOG = 1;
 	static final private int ON_BACK_KEY_DIALOG = 2;
 	public static final String FIRST_TEAM_NAME = "FIRST_TEAM_NAME";
@@ -38,6 +48,30 @@ public class GameActivity extends Activity {
 		team1_name_txt = (TextView)findViewById(R.id.team1_name_txt);
 		team2_name_txt = (TextView)findViewById(R.id.team2_name_txt);
 
+		table_scores = (TableLayout)findViewById(R.id.table_scores);
+		final TableRow table_row = new TableRow(this);
+		
+		table_row.setClickable(true);
+		cell_item = new TextView(this);
+		cell_item2 = new TextView(this);
+		
+		cell_item.setText("OD_KOD");
+		cell_item.setGravity(Gravity.LEFT);
+
+		cell_item2.setText("OD_KOD");
+		cell_item2.setGravity(Gravity.RIGHT);
+		
+		table_row.addView(cell_item, 0);
+		table_row.addView(cell_item2, 1);
+		table_row.setId(0);
+		cell_item.setOnClickListener(new View.OnClickListener() {
+			
+			public void onClick(View v) {
+				Toast.makeText(GameActivity.this, "SUCCESS", Toast.LENGTH_SHORT).show();
+			}
+		});
+		table_scores.addView(table_row);
+		
 		Bundle bundle = getIntent().getExtras();
 		boolean resume_game = bundle.getBoolean("resume_game");
 		Context context = getApplicationContext();
@@ -48,6 +82,17 @@ public class GameActivity extends Activity {
 		else {
 			showDialog(NAMES_ENTRY_DIALOG);
 		}
+		
+		add_new_game_btn = (Button)findViewById(R.id.add_new_game_btn);
+		add_new_game_btn.setOnClickListener(new View.OnClickListener() {
+			
+			public void onClick(View v) {
+				Toast.makeText(GameActivity.this, "BUTTON CLICKED", Toast.LENGTH_SHORT).show();
+				Intent intent;
+				intent = new Intent(GameActivity.this, AddGameActivity.class);
+				startActivity(intent);
+			}
+		});
 	}
 
 	@Override
@@ -145,6 +190,12 @@ public class GameActivity extends Activity {
 	public void updateGameFromPreferences() {
 		team1_name_txt.setText(prefs.getString(FIRST_TEAM_NAME, "TEAM 1"));
 		team2_name_txt.setText(prefs.getString(SECOND_TEAM_NAME, "TEAM 2"));
+	}
+	
+	public void addNewRow() {
+		final TableRow table_row = new TableRow(this);
+		table_row.setClickable(true);
+		cell_item.setText("TEST"); // TODO ADDING POINTS
 	}
 	
 	@Override

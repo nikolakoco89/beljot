@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
     <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/relativeLayout1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
@@ -14,9 +15,9 @@
             android:id="@+id/team1_name_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
+            android:text="TEAM 1"
             android:textSize="20sp"
-            android:text="TEAM 1" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/team2_name_txt"
@@ -24,9 +25,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:textStyle="bold"
+            android:text="TEAM 2"
             android:textSize="20sp"
-            android:text="TEAM 2" />
+            android:textStyle="bold" />
 
         <!-- <include  layout="@layout/table" android:id="@+id/table_scores_whole" /> -->
 
@@ -35,7 +36,8 @@
             android:id="@+id/table_scores"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/team1_name_txt" >
+            android:layout_below="@id/team1_name_txt"
+            android:stretchColumns="*" >
 
             <!-- android:padding="5dp" -->
 
@@ -48,7 +50,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="left"
-                    android:text="TEST1ttyeyeryrtyrtyrtyre" />
+                    android:text="TEST1" />
 
                 <TextView
                     android:id="@+id/pointsB1"
@@ -57,10 +59,10 @@
                     android:layout_weight="1"
                     android:gravity="right"
                     android:text="TEST2" />
-
             </TableRow>
 
-        <!--     <TableRow
+            <!--
+                 <TableRow
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content" >
 
@@ -88,9 +90,19 @@
                     android:id="@+id/pointsB3"
                     android:layout_height="wrap_content"
                     android:text="TEST4446" />
-            </TableRow> -->
+            </TableRow>
+            -->
         </TableLayout>
-]
+]
     </RelativeLayout>
 
-</LinearLayout>
+    <Button
+        android:id="@+id/add_new_game_btn"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:text="@string/add_new_game_string" />
+
+</RelativeLayout>
