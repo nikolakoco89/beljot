@@ -14,24 +14,41 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int add_new_game_btn=0x7f050006;
-        public static final int firstTeamEditText=0x7f05000b;
-        public static final int history_btn=0x7f050009;
-        public static final int new_game_btn=0x7f050007;
-        public static final int pointsA1=0x7f050004;
-        public static final int pointsA2=0x7f05000e;
-        public static final int pointsA3=0x7f050010;
-        public static final int pointsB1=0x7f050005;
-        public static final int pointsB2=0x7f05000f;
-        public static final int pointsB3=0x7f050011;
-        public static final int relativeLayout1=0x7f050000;
-        public static final int resume_game_btn=0x7f050008;
-        public static final int secondTeamEditText=0x7f05000c;
-        public static final int settings_btn=0x7f05000a;
-        public static final int table_scores=0x7f050003;
-        public static final int team1_name_txt=0x7f050001;
-        public static final int team2_name_txt=0x7f050002;
-        public static final int validationWarningText=0x7f05000d;
+        public static final int addPointsBtn=0x7f050010;
+        public static final int add_new_game_btn=0x7f050017;
+        public static final int belotRadioGroup=0x7f05000a;
+        public static final int checkBox1=0x7f050003;
+        public static final int claimsAEditText=0x7f050007;
+        public static final int claimsBEditText=0x7f050008;
+        public static final int firstTeamEditText=0x7f05001c;
+        public static final int history_btn=0x7f05001a;
+        public static final int new_game_btn=0x7f050018;
+        public static final int pointsA1=0x7f050015;
+        public static final int pointsA2=0x7f05001f;
+        public static final int pointsA3=0x7f050021;
+        public static final int pointsAEditText=0x7f050004;
+        public static final int pointsB1=0x7f050016;
+        public static final int pointsB2=0x7f050020;
+        public static final int pointsB3=0x7f050022;
+        public static final int pointsBEditText=0x7f050005;
+        public static final int relativeLayout1=0x7f050011;
+        public static final int resume_game_btn=0x7f050019;
+        public static final int secondTeamEditText=0x7f05001d;
+        public static final int settings_btn=0x7f05001b;
+        public static final int tableRow1=0x7f050006;
+        public static final int tableRow2=0x7f05000d;
+        public static final int tableRowTeamNames=0x7f050000;
+        public static final int table_scores=0x7f050014;
+        public static final int team1_name_txt=0x7f050012;
+        public static final int team1_name_txt_2=0x7f050001;
+        public static final int team2_name_txt=0x7f050013;
+        public static final int team2_name_txt_2=0x7f050002;
+        public static final int teamARadioBtn=0x7f05000b;
+        public static final int teamA_points_txt=0x7f05000e;
+        public static final int teamBRadioBtn=0x7f05000c;
+        public static final int teamB_points_txt=0x7f05000f;
+        public static final int textView1=0x7f050009;
+        public static final int validationWarningText=0x7f05001e;
     }
     public static final class layout {
         public static final int add_game=0x7f030000;
@@ -44,8 +61,12 @@ public final class R {
     }
     public static final class string {
         public static final int add_new_game_string=0x7f040002;
+        public static final int add_points_string=0x7f040014;
         public static final int app_name=0x7f040000;
+        public static final int belot_string=0x7f040013;
         public static final int cancel_button_string=0x7f04000b;
+        public static final int chaljo_string=0x7f040010;
+        public static final int claims_string=0x7f040012;
         public static final int end_game_button_string=0x7f04000d;
         public static final int first_team_string=0x7f040006;
         public static final int history_string=0x7f040003;
@@ -54,6 +75,7 @@ public final class R {
         public static final int name_validation_string=0x7f04000f;
         public static final int new_game_string=0x7f040001;
         public static final int on_back_key_dialog_message_string=0x7f04000c;
+        public static final int points_string=0x7f040011;
         public static final int resume_game_string=0x7f040005;
         public static final int save_to_resume_button_string=0x7f04000e;
         public static final int second_team_string=0x7f040007;

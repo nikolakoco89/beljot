@@ -17,5 +17,10 @@
     <string name="end_game_button_string">End Game</string>
     <string name="save_to_resume_button_string">Save to resume</string>
     <string name="name_validation_string">Please enter names for the teams</string>
+    <string name="chaljo_string">Chaljo</string>
+    <string name="points_string">Points</string>
+    <string name="claims_string">Claims</string>
+    <string name="belot_string">Belot claim</string>
+    <string name="add_points_string">Add points</string>
 
 </resources>

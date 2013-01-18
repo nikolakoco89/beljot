@@ -60,40 +60,9 @@
                     android:gravity="right"
                     android:text="TEST2" />
             </TableRow>
-
-            <!--
-                 <TableRow
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" >
-
-                <TextView
-                    android:id="@+id/pointsA2"
-                    android:layout_height="wrap_content"
-                    android:text="TEST3" />
-
-                <TextView
-                    android:id="@+id/pointsB2"
-                    android:layout_height="wrap_content"
-                    android:text="TEST4" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" >
-
-                <TextView
-                    android:id="@+id/pointsA3"
-                    android:layout_height="wrap_content"
-                    android:text="TEST5" />
-
-                <TextView
-                    android:id="@+id/pointsB3"
-                    android:layout_height="wrap_content"
-                    android:text="TEST4446" />
-            </TableRow>
-            -->
+ 
         </TableLayout>
-]
+
     </RelativeLayout>
 
     <Button
