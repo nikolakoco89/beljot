@@ -59,7 +59,7 @@ public class BeljotActivity extends Activity implements OnClickListener {
 			intent.putExtras(bundle);
 			startActivityForResult(intent, SHOW_NEW_GAME);
 		} else if(v.equals(history_btn)) {
-			intent = new Intent(this, HistoryActivity.class);
+			intent = new Intent(this, AddGameActivity.class);
 			startActivity(intent);
 		} else if(v.equals(settings_btn)) {
 			intent = new Intent(this, SettingsActivity.class);

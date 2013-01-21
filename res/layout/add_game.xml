@@ -31,7 +31,7 @@
     </TableRow>
 
     <CheckBox
-        android:id="@+id/checkBox1"
+        android:id="@+id/chaljoChkBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tableRowTeamNames"
@@ -40,35 +40,39 @@
         android:text="@string/chaljo_string" />
 
     <TableRow
+        android:id="@+id/belotCheckboxTableRow"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/checkBox1" >
+        android:layout_below="@+id/chaljoChkBox" >
 
-        <EditText
-            android:id="@+id/pointsAEditText"
+        <CheckBox
+            android:id="@+id/belotClaimAChkBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/textViews1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="@string/points_string"
-            android:inputType="number" />
+            android:gravity="center_horizontal"
+            android:text="@string/belot_string"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
-        <EditText
-            android:id="@+id/pointsBEditText"
+        <CheckBox
+            android:id="@+id/belotClaimBChkBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="@string/points_string"
-            android:inputType="number" />
+            android:layout_gravity="right" />
     </TableRow>
 
     <TableRow
-        android:id="@+id/tableRow1"
+        android:id="@+id/claimsTableRow"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/checkBox1"
-        android:layout_marginTop="50dp" >
+        android:layout_below="@+id/belotCheckboxTableRow" >
 
         <EditText
             android:id="@+id/claimsAEditText"
@@ -87,51 +91,42 @@
             android:inputType="number" />
     </TableRow>
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tableRow1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
-        android:text="@string/belot_string"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <RadioGroup
-        android:id="@+id/belotRadioGroup"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
-        android:orientation="horizontal" >
-
-        <RadioButton
-            android:id="@+id/teamARadioBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_weight="1"
-            android:text="TEAM A" />
-
-        <RadioButton
-            android:id="@+id/teamBRadioBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:text="TEAM B" />
-    </RadioGroup>
-
     <TableRow
-        android:id="@+id/tableRow2"
+        android:id="@+id/pointsTableRow3"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/belotRadioGroup"
-        android:layout_marginTop="5dp" >
+        android:layout_below="@+id/claimsTableRow"
+        android:layout_marginTop="10dp" >
+
+        <EditText
+            android:id="@+id/pointsAEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/points_string"
+            android:inputType="number" >
+        </EditText>
+
+        <EditText
+            android:id="@+id/pointsBEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/points_string"
+            android:inputType="number" />
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/teamPointsTableRow"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/pointsTableRow3"
+        android:layout_marginTop="16dp" >
 
         <TextView
-            android:id="@+id/teamA_points_txt"
+            android:id="@+id/teamAPointsTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -141,7 +136,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/teamB_points_txt"
+            android:id="@+id/teamBPointsTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
