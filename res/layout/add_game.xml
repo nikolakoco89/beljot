@@ -30,21 +30,67 @@
             android:textStyle="bold" />
     </TableRow>
 
-    <CheckBox
+    <!--
+         <CheckBox
         android:id="@+id/chaljoChkBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tableRowTeamNames"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
-        android:text="@string/chaljo_string" />
+        android:text="@string/chaljo_string" />
+    -->
+
+    <RelativeLayout
+        android:id="@+id/chaljoCheckboxTableRow"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tableRowTeamNames" >
+
+        <CheckBox
+            android:id="@+id/chaljoChkBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="@string/chaljo_string" />
+
+        <TextView
+            android:id="@+id/teamAChaljoNameTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/chaljoChkBox"
+            android:layout_alignBottom="@+id/chaljoChkBox"
+            android:layout_centerHorizontal="true"
+            android:gravity="right"
+            android:text="TEAM A"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/teamBChaljoNameTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/teamAChaljoNameTxt"
+            android:layout_alignBottom="@+id/teamAChaljoNameTxt"
+            android:layout_toRightOf="@+id/teamAChaljoNameTxt"
+            android:layout_marginLeft="20dp"
+            android:gravity="right"
+            android:text="TEAM B"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+    </RelativeLayout>
 
     <TableRow
         android:id="@+id/belotCheckboxTableRow"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/chaljoChkBox" >
+        android:layout_below="@+id/chaljoCheckboxTableRow" >
 
         <CheckBox
             android:id="@+id/belotClaimAChkBox"

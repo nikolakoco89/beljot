@@ -7,10 +7,12 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +29,8 @@ public class AddGameActivity extends Activity {
 	CheckBox chaljoChkBox;
 	TextView teamAPointsTxt;
 	TextView teamBPointsTxt;
+	TextView teamAChaljoNameTxt;
+	TextView teamBChaljoNameTxt;
 	int gamePoints;
 	boolean ignoreTextChanged;
 
@@ -49,6 +53,26 @@ public class AddGameActivity extends Activity {
 
 		teamAPointsTxt = (TextView) findViewById(R.id.teamAPointsTxt);
 		teamBPointsTxt = (TextView) findViewById(R.id.teamBPointsTxt);
+		teamAChaljoNameTxt = (TextView) findViewById(R.id.teamAChaljoNameTxt);
+		teamAChaljoNameTxt.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				pointsAEditText.setText("252");
+				pointsBEditText.setText("0");
+				calculatePoints();
+			}
+		});
+		teamBChaljoNameTxt = (TextView) findViewById(R.id.teamBChaljoNameTxt);
+		teamBChaljoNameTxt.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				pointsBEditText.setText("252");
+				pointsAEditText.setText("0");
+				calculatePoints();
+			}
+		});
 		addListenerToCheckBox();
 		addListenersToEditTexts();
 		
@@ -198,9 +222,36 @@ public class AddGameActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
+				RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)chaljoChkBox.getLayoutParams();
 				if (chaljoChkBox.isChecked()) {
+					layoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL, 0);
+					chaljoChkBox.setLayoutParams(layoutParams);
+					
+					teamAChaljoNameTxt.setVisibility(View.VISIBLE);
+					teamBChaljoNameTxt.setVisibility(View.VISIBLE);
+					
+					pointsAEditText.setEnabled(false);
+					pointsBEditText.setEnabled(false);
+					
 					gamePoints = 252;
 				} else {
+					layoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL);
+					chaljoChkBox.setLayoutParams(layoutParams);
+					teamAChaljoNameTxt.setVisibility(View.GONE);
+					teamBChaljoNameTxt.setVisibility(View.GONE);
+					
+					pointsAEditText.setEnabled(true);
+					pointsAEditText.setText("");
+					
+					pointsBEditText.setEnabled(true);
+					pointsBEditText.setText("");
+					
+					teamAPointsTxt.setText("0");
+					teamAPointsTxt.setTextColor(Color.GRAY);
+					
+					teamBPointsTxt.setText("0");
+					teamBPointsTxt.setTextColor(Color.GRAY);
+					
 					gamePoints = 162;
 				}
 				calculatePoints();
