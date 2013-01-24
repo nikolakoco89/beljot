@@ -10,7 +10,7 @@
         android:layout_height="wrap_content" >
 
         <TextView
-            android:id="@+id/team1_name_txt_2"
+            android:id="@+id/teamANameTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -20,7 +20,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/team2_name_txt_2"
+            android:id="@+id/teamBNameTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

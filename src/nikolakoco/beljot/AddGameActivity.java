@@ -1,6 +1,7 @@
 package nikolakoco.beljot;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
@@ -27,16 +28,19 @@ public class AddGameActivity extends Activity {
 	CheckBox belotClaimAChkBox;
 	CheckBox belotClaimBChkBox;
 	CheckBox chaljoChkBox;
+	TextView teamANameTxt;
+	TextView teamBNameTxt;
 	TextView teamAPointsTxt;
 	TextView teamBPointsTxt;
 	TextView teamAChaljoNameTxt;
 	TextView teamBChaljoNameTxt;
 	int gamePoints;
 	boolean ignoreTextChanged;
+	Team teamA;
+	Team teamB;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.add_game);
 		
@@ -47,35 +51,127 @@ public class AddGameActivity extends Activity {
 		addPointsBtn.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
+				teamA.setBelotClaim(belotClaimAChkBox.isChecked());
+				teamB.setBelotClaim(belotClaimBChkBox.isChecked());
+				
+				teamA.setPoints(pointsAEditText.getText().toString());
+				teamB.setPoints(pointsBEditText.getText().toString());
+				
+				teamA.setClaims(claimsAEditText.getText().toString());
+				teamB.setClaims(claimsBEditText.getText().toString());
+				
+				teamA.setFinalPoints(teamAPointsTxt.getText().toString());
+				teamB.setFinalPoints(teamBPointsTxt.getText().toString());
+				
+				Game game = new Game(teamA, teamB, gamePoints);
+				// TODO transfer of game information back to GameActivity
+				Intent resultIntent = new Intent();
+				resultIntent.putExtra("returnGameObject", game);
+				AddGameActivity.this.setResult(RESULT_OK, resultIntent);
 				finish();
 			}
 		});
 
+		initializeTextViews();
+		addListenerToCheckBox();
+		addListenersToEditTexts();
+		
+		// TODO New game and viewing old game 
+		boolean newGame = true;
+		if(newGame) {
+			createTeams(null, newGame);
+		} else {
+			// TODO Get information about the game to be viewed
+			createTeams(null, newGame);
+		}
+		
+	}
+
+	private void createTeams(Game game, boolean newGame) {
+		teamA = new Team();
+		teamB = new Team();
+		if(newGame) {
+		}
+		// TODO construct teams and fill views with information if it's an old game
+		teamA.setBelotClaim(belotClaimAChkBox.isChecked());
+		teamB.setBelotClaim(belotClaimBChkBox.isChecked());
+		
+		teamA.setChaljo(true);
+		teamB.setChaljo(true);
+		
+	}
+
+	private void initializeTextViews() {
+		Bundle bundle = getIntent().getExtras();
 		teamAPointsTxt = (TextView) findViewById(R.id.teamAPointsTxt);
 		teamBPointsTxt = (TextView) findViewById(R.id.teamBPointsTxt);
+		
+		teamANameTxt = (TextView) findViewById(R.id.teamANameTxt);
+		teamANameTxt.setText(bundle.getString("teamAName"));
+		teamANameTxt.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				if(ignoreTextChanged) {
+					ignoreTextChanged = false;
+					teamANameTxt.setTextColor(Color.GREEN);
+					teamBNameTxt.setTextColor(Color.GRAY);
+					Toast.makeText(AddGameActivity.this, teamANameTxt.getText().toString()
+														+ " have taken the card!",
+														Toast.LENGTH_SHORT).show();
+					teamA.setCardTaken(true);
+					teamB.setCardTaken(false);
+					ignoreTextChanged = true;
+				}
+			}
+		});
+		
+		teamBNameTxt = (TextView) findViewById(R.id.teamBNameTxt);
+		teamBNameTxt.setText(bundle.getString("teamBName"));
+		teamBNameTxt.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				if(ignoreTextChanged) {
+					ignoreTextChanged = false;
+					teamBNameTxt.setTextColor(Color.GREEN);
+					teamANameTxt.setTextColor(Color.GRAY);
+					Toast.makeText(AddGameActivity.this, teamBNameTxt.getText().toString()
+							+ " have taken the card!",
+							Toast.LENGTH_SHORT).show();
+					teamB.setCardTaken(true);
+					teamA.setCardTaken(false);
+					ignoreTextChanged = true;
+				}
+			}
+		});
+		
 		teamAChaljoNameTxt = (TextView) findViewById(R.id.teamAChaljoNameTxt);
+		teamAChaljoNameTxt.setText(bundle.getString("teamAName"));
 		teamAChaljoNameTxt.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				pointsAEditText.setText("252");
 				pointsBEditText.setText("0");
+				teamA.setChaljo(true);
+				teamB.setChaljo(false);
 				calculatePoints();
 			}
 		});
 		teamBChaljoNameTxt = (TextView) findViewById(R.id.teamBChaljoNameTxt);
+		teamBChaljoNameTxt.setText(bundle.getString("teamBName"));
 		teamBChaljoNameTxt.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				pointsBEditText.setText("252");
 				pointsAEditText.setText("0");
+				teamB.setChaljo(true);
+				teamA.setChaljo(false);
 				calculatePoints();
 			}
 		});
-		addListenerToCheckBox();
-		addListenersToEditTexts();
-		
 	}
 
 	private void addListenersToEditTexts() {

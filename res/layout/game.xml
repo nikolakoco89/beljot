@@ -31,6 +31,8 @@
 
         <!-- <include  layout="@layout/table" android:id="@+id/table_scores_whole" /> -->
 
+
+        <!--
         <TableLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/table_scores"
@@ -38,8 +40,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/team1_name_txt"
             android:stretchColumns="*" >
-
-            <!-- android:padding="5dp" -->
 
             <TableRow
                 android:layout_width="fill_parent"
@@ -62,6 +62,17 @@
             </TableRow>
  
         </TableLayout>
+        -->
+
+        <ListView
+            android:id="@+id/pointsList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/team1_name_txt"
+            android:layout_above="@+id/add_new_game_btn" >
+
+        </ListView>
 
     </RelativeLayout>
 

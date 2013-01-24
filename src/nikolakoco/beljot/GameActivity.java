@@ -1,5 +1,8 @@
 package nikolakoco.beljot;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -10,13 +13,12 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TableLayout;
-import android.widget.TableRow;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,10 +31,14 @@ public class GameActivity extends Activity {
 	TextView cell_item2;
 	EditText firstTeamEditText;
 	EditText secondTeamEditText;
-	TableLayout table_scores;
 	Button add_new_game_btn;
+	ListView pointsList;
+	ArrayList<HashMap<String, String>> pointsArrayList;
+	HashMap<String, String> pointsMap;
+	private SimpleAdapter pointsAdapter;
 	static final private int NAMES_ENTRY_DIALOG = 1;
 	static final private int ON_BACK_KEY_DIALOG = 2;
+	static final private int SHOW_ADD_NEW_GAME = 3;
 	public static final String FIRST_TEAM_NAME = "FIRST_TEAM_NAME";
 	public static final String SECOND_TEAM_NAME = "SECOND_TEAM_NAME";
 	SharedPreferences prefs;
@@ -46,29 +52,14 @@ public class GameActivity extends Activity {
 		team1_name_txt = (TextView)findViewById(R.id.team1_name_txt);
 		team2_name_txt = (TextView)findViewById(R.id.team2_name_txt);
 
-		table_scores = (TableLayout)findViewById(R.id.table_scores);
-		final TableRow table_row = new TableRow(this);
+		pointsList = (ListView)findViewById(R.id.pointsList);
 		
-		table_row.setClickable(true);
-		cell_item = new TextView(this);
-		cell_item2 = new TextView(this);
-		
-		cell_item.setText("OD_KOD");
-		cell_item.setGravity(Gravity.LEFT);
-
-		cell_item2.setText("OD_KOD");
-		cell_item2.setGravity(Gravity.RIGHT);
-		
-		table_row.addView(cell_item, 0);
-		table_row.addView(cell_item2, 1);
-		table_row.setId(0);
-		cell_item.setOnClickListener(new View.OnClickListener() {
-			
-			public void onClick(View v) {
-				Toast.makeText(GameActivity.this, "SUCCESS", Toast.LENGTH_SHORT).show();
-			}
-		});
-		table_scores.addView(table_row);
+		pointsArrayList = new ArrayList<HashMap<String, String>>();
+		pointsMap = new HashMap<String, String>();
+		pointsAdapter = new SimpleAdapter(this, pointsArrayList, R.layout.row,
+											new String[] {"teamAPoints", "teamBPoints"},
+											new int[] {R.id.teamACell, R.id.teamBCell});
+		pointsList.setAdapter(pointsAdapter);
 		
 		Bundle bundle = getIntent().getExtras();
 		boolean resume_game = bundle.getBoolean("resume_game");
@@ -86,11 +77,16 @@ public class GameActivity extends Activity {
 			
 			public void onClick(View v) {
 				Toast.makeText(GameActivity.this, "BUTTON CLICKED", Toast.LENGTH_SHORT).show();
+				Bundle addGameBundle = new Bundle();
+				addGameBundle.putString("teamAName", team1_name_txt.getText().toString());
+				addGameBundle.putString("teamBName", team2_name_txt.getText().toString());
 				Intent intent;
 				intent = new Intent(GameActivity.this, AddGameActivity.class);
-				startActivity(intent);
+				intent.putExtras(addGameBundle);
+				startActivityForResult(intent, SHOW_ADD_NEW_GAME);
 			}
 		});
+		
 	}
 
 	@Override
@@ -190,15 +186,23 @@ public class GameActivity extends Activity {
 		team2_name_txt.setText(prefs.getString(SECOND_TEAM_NAME, "TEAM 2"));
 	}
 	
-	public void addNewRow() {
-		final TableRow table_row = new TableRow(this);
-		table_row.setClickable(true);
-		cell_item.setText("TEST"); // TODO ADDING POINTS
+	public void addNewRow(Game game) {
+		pointsMap = new HashMap<String, String>();
+		pointsMap.put("teamAPoints", game.getTeamA().getFinalPoints());
+		pointsMap.put("teamBPoints", game.getTeamB().getFinalPoints());
+		pointsArrayList.add(pointsMap);
+		pointsAdapter.notifyDataSetChanged();
 	}
 	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		// TODO Auto-generated method stub
 		super.onActivityResult(requestCode, resultCode, data);
+		
+		if(requestCode == SHOW_ADD_NEW_GAME) {
+			if(resultCode == Activity.RESULT_OK) {
+				Game game = data.getParcelableExtra("returnGameObject");
+				addNewRow(game);
+			}
+		}
 	}
 }

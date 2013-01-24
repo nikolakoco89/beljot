@@ -15,7 +15,7 @@ public final class R {
     }
     public static final class id {
         public static final int addPointsBtn=0x7f050014;
-        public static final int add_new_game_btn=0x7f05001b;
+        public static final int add_new_game_btn=0x7f050019;
         public static final int belotCheckboxTableRow=0x7f050007;
         public static final int belotClaimAChkBox=0x7f050008;
         public static final int belotClaimBChkBox=0x7f05000a;
@@ -24,35 +24,38 @@ public final class R {
         public static final int claimsAEditText=0x7f05000c;
         public static final int claimsBEditText=0x7f05000d;
         public static final int claimsTableRow=0x7f05000b;
-        public static final int firstTeamEditText=0x7f050020;
-        public static final int history_btn=0x7f05001e;
-        public static final int new_game_btn=0x7f05001c;
-        public static final int pointsA1=0x7f050019;
-        public static final int pointsA2=0x7f050023;
-        public static final int pointsA3=0x7f050025;
+        public static final int firstTeamEditText=0x7f05001e;
+        public static final int history_btn=0x7f05001c;
+        public static final int new_game_btn=0x7f05001a;
+        public static final int pointsA1=0x7f050024;
+        public static final int pointsA2=0x7f050026;
+        public static final int pointsA3=0x7f050028;
         public static final int pointsAEditText=0x7f05000f;
-        public static final int pointsB1=0x7f05001a;
-        public static final int pointsB2=0x7f050024;
-        public static final int pointsB3=0x7f050026;
+        public static final int pointsB1=0x7f050025;
+        public static final int pointsB2=0x7f050027;
+        public static final int pointsB3=0x7f050029;
         public static final int pointsBEditText=0x7f050010;
+        public static final int pointsList=0x7f050018;
         public static final int pointsTableRow3=0x7f05000e;
         public static final int relativeLayout1=0x7f050015;
-        public static final int resume_game_btn=0x7f05001d;
-        public static final int secondTeamEditText=0x7f050021;
-        public static final int settings_btn=0x7f05001f;
+        public static final int resume_game_btn=0x7f05001b;
+        public static final int secondTeamEditText=0x7f05001f;
+        public static final int settings_btn=0x7f05001d;
         public static final int tableRowTeamNames=0x7f050000;
-        public static final int table_scores=0x7f050018;
+        public static final int table_scores=0x7f050023;
         public static final int team1_name_txt=0x7f050016;
-        public static final int team1_name_txt_2=0x7f050001;
         public static final int team2_name_txt=0x7f050017;
-        public static final int team2_name_txt_2=0x7f050002;
+        public static final int teamACell=0x7f050021;
         public static final int teamAChaljoNameTxt=0x7f050005;
+        public static final int teamANameTxt=0x7f050001;
         public static final int teamAPointsTxt=0x7f050012;
+        public static final int teamBCell=0x7f050022;
         public static final int teamBChaljoNameTxt=0x7f050006;
+        public static final int teamBNameTxt=0x7f050002;
         public static final int teamBPointsTxt=0x7f050013;
         public static final int teamPointsTableRow=0x7f050011;
         public static final int textViews1=0x7f050009;
-        public static final int validationWarningText=0x7f050022;
+        public static final int validationWarningText=0x7f050020;
     }
     public static final class layout {
         public static final int add_game=0x7f030000;
@@ -60,8 +63,9 @@ public final class R {
         public static final int history=0x7f030002;
         public static final int main=0x7f030003;
         public static final int name_entry_dialog=0x7f030004;
-        public static final int settings=0x7f030005;
-        public static final int table=0x7f030006;
+        public static final int row=0x7f030005;
+        public static final int settings=0x7f030006;
+        public static final int table=0x7f030007;
     }
     public static final class string {
         public static final int add_new_game_string=0x7f040002;
