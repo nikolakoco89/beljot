@@ -15,7 +15,17 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="left"
-            android:text="TEAM A"
+            android:text="@string/team_a_string"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/gameNumberTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/game_number_string"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -25,21 +35,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="right"
-            android:text="TEAM B"
+            android:text="@string/team_b_string"
             android:textSize="20sp"
             android:textStyle="bold" />
     </TableRow>
-
-    <!--
-         <CheckBox
-        android:id="@+id/chaljoChkBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tableRowTeamNames"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
-        android:text="@string/chaljo_string" />
-    -->
 
     <RelativeLayout
         android:id="@+id/chaljoCheckboxTableRow"
@@ -64,7 +63,7 @@
             android:layout_alignBottom="@+id/chaljoChkBox"
             android:layout_centerHorizontal="true"
             android:gravity="right"
-            android:text="TEAM A"
+            android:text="@string/team_a_string"
             android:textSize="20sp"
             android:textStyle="bold"
             android:visibility="gone" />
@@ -78,7 +77,7 @@
             android:layout_toRightOf="@+id/teamAChaljoNameTxt"
             android:layout_marginLeft="20dp"
             android:gravity="right"
-            android:text="TEAM B"
+            android:text="@string/team_b_string"
             android:textSize="20sp"
             android:textStyle="bold"
             android:visibility="gone" />

@@ -15,7 +15,7 @@
             android:id="@+id/team1_name_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TEAM 1"
+            android:text="@string/team_a_string"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -25,56 +25,47 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:text="TEAM 2"
+            android:text="@string/team_b_string"
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <!-- <include  layout="@layout/table" android:id="@+id/table_scores_whole" /> -->
-
-
-        <!--
-        <TableLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/table_scores"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/team1_name_txt"
-            android:stretchColumns="*" >
-
-            <TableRow
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" >
-
-                <TextView
-                    android:id="@+id/pointsA1"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="left"
-                    android:text="TEST1" />
-
-                <TextView
-                    android:id="@+id/pointsB1"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="right"
-                    android:text="TEST2" />
-            </TableRow>
- 
-        </TableLayout>
-        -->
-
         <ListView
             android:id="@+id/pointsList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_below="@+id/team1_name_txt"
-            android:layout_above="@+id/add_new_game_btn" >
-
+            android:layout_below="@+id/team1_name_txt" >
         </ListView>
-
     </RelativeLayout>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/add_new_game_btn"
+        android:layout_below="@+id/pointsList"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/fullPointsTeamATxt"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="0"
+            android:textSize="40sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/fullPointsTeamBTxt"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="0"
+            android:textSize="40sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/add_new_game_btn"

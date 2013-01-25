@@ -22,5 +22,8 @@
     <string name="claims_string">Claims</string>
     <string name="belot_string">Belot claim</string>
     <string name="add_points_string">Add points</string>
+    <string name="game_number_string">Game No.</string>
+    <string name="team_a_string">TEAM A</string>
+    <string name="team_b_string">TEAM B</string>
 
 </resources>

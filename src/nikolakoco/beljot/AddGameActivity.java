@@ -8,7 +8,6 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -34,10 +33,13 @@ public class AddGameActivity extends Activity {
 	TextView teamBPointsTxt;
 	TextView teamAChaljoNameTxt;
 	TextView teamBChaljoNameTxt;
+	TextView gameNumberTxt;
 	int gamePoints;
 	boolean ignoreTextChanged;
+	boolean newGame;
 	Team teamA;
 	Team teamB;
+	static final private int RESULT_OLD_GAME = 4;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,11 +48,13 @@ public class AddGameActivity extends Activity {
 		
 		gamePoints = 162;
 		ignoreTextChanged = true;
+		newGame = true;
 		
 		addPointsBtn = (Button) findViewById(R.id.addPointsBtn);
 		addPointsBtn.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
+				// Set up the team objects and later create Game object
 				teamA.setBelotClaim(belotClaimAChkBox.isChecked());
 				teamB.setBelotClaim(belotClaimBChkBox.isChecked());
 				
@@ -63,11 +67,18 @@ public class AddGameActivity extends Activity {
 				teamA.setFinalPoints(teamAPointsTxt.getText().toString());
 				teamB.setFinalPoints(teamBPointsTxt.getText().toString());
 				
+				// Create the game object and set it up for transfer to GameActivity
 				Game game = new Game(teamA, teamB, gamePoints);
-				// TODO transfer of game information back to GameActivity
 				Intent resultIntent = new Intent();
 				resultIntent.putExtra("returnGameObject", game);
-				AddGameActivity.this.setResult(RESULT_OK, resultIntent);
+				if(!newGame) {
+					resultIntent.putExtra("gameNumber", gameNumberTxt.getText().toString());
+					AddGameActivity.this.setResult(RESULT_OLD_GAME, resultIntent);
+				} else {
+					AddGameActivity.this.setResult(RESULT_OK, resultIntent);
+				}
+					
+				
 				finish();
 			}
 		});
@@ -76,33 +87,61 @@ public class AddGameActivity extends Activity {
 		addListenerToCheckBox();
 		addListenersToEditTexts();
 		
-		// TODO New game and viewing old game 
-		boolean newGame = true;
+		newGame = getIntent().getExtras().getBoolean("newGame");
 		if(newGame) {
-			createTeams(null, newGame);
+			createTeams(null);
 		} else {
-			// TODO Get information about the game to be viewed
-			createTeams(null, newGame);
+			Game game = getIntent().getParcelableExtra("viewExistingGameObject");
+			createTeams(game);
 		}
 		
 	}
 
-	private void createTeams(Game game, boolean newGame) {
+	private void createTeams(Game game) {
 		teamA = new Team();
 		teamB = new Team();
-		if(newGame) {
+		if (!newGame) {
+			// Viewing existing game
+			// Set game number
+			gameNumberTxt.setText(getIntent().getExtras().getString("gameNumber"));
+			
+			// Set chaljo checkbox and textViews
+			if (game.getTeamA().isChaljo()) {
+				chaljoChkBox.performClick();
+				teamAChaljoNameTxt.performClick();
+			} else if (game.getTeamB().isChaljo()) {
+				chaljoChkBox.performClick();
+				teamBChaljoNameTxt.performClick();
+			}
+			
+			// Set belot claim
+			if (game.getTeamA().isBelotClaimed()) {
+				belotClaimAChkBox.performClick();
+			} else if (game.getTeamB().isBelotClaimed()) {
+				belotClaimBChkBox.performClick();
+			}
+			
+			// Set claims if any
+			if (game.getTeamA().getClaims().length() > 1) {
+				claimsAEditText.setText(game.getTeamA().getClaims());
+			} else if (game.getTeamB().getClaims().length() > 1) {
+				claimsBEditText.setText(game.getTeamB().getClaims());
+			}
+			
+			// Set points and calculate final points
+			pointsAEditText.setText(game.getTeamA().getPoints());
+			pointsBEditText.setText(game.getTeamB().getPoints());
+			calculatePoints();
 		}
-		// TODO construct teams and fill views with information if it's an old game
-		teamA.setBelotClaim(belotClaimAChkBox.isChecked());
-		teamB.setBelotClaim(belotClaimBChkBox.isChecked());
-		
-		teamA.setChaljo(true);
-		teamB.setChaljo(true);
 		
 	}
 
 	private void initializeTextViews() {
 		Bundle bundle = getIntent().getExtras();
+		
+		gameNumberTxt = (TextView) findViewById(R.id.gameNumberTxt);
+		gameNumberTxt.setText(bundle.getString("gameNumber"));
+		
 		teamAPointsTxt = (TextView) findViewById(R.id.teamAPointsTxt);
 		teamBPointsTxt = (TextView) findViewById(R.id.teamBPointsTxt);
 		
@@ -193,14 +232,12 @@ public class AddGameActivity extends Activity {
 			@Override
 			public void beforeTextChanged(CharSequence s, int start, int count,
 					int after) {
-				// TODO Auto-generated method stub
-				
+				// Do nothing
 			}
 			
 			@Override
 			public void afterTextChanged(Editable s) {
-				// TODO Auto-generated method stub
-				
+				// Do nothing
 			}
 		});
 
@@ -222,14 +259,12 @@ public class AddGameActivity extends Activity {
 			@Override
 			public void beforeTextChanged(CharSequence s, int start, int count,
 					int after) {
-				// TODO Auto-generated method stub
-				
+				// Do nothing
 			}
 			
 			@Override
 			public void afterTextChanged(Editable s) {
-				// TODO Auto-generated method stub
-				
+				// Do nothing
 			}
 		});
 		
@@ -249,14 +284,12 @@ public class AddGameActivity extends Activity {
 			@Override
 			public void beforeTextChanged(CharSequence s, int start, int count,
 					int after) {
-				// TODO Auto-generated method stub
-				
+				// Do nothing
 			}
 			
 			@Override
 			public void afterTextChanged(Editable s) {
-				// TODO Auto-generated method stub
-				
+				// Do nothing
 			}
 		});
 		
@@ -276,14 +309,12 @@ public class AddGameActivity extends Activity {
 			@Override
 			public void beforeTextChanged(CharSequence s, int start, int count,
 					int after) {
-				// TODO Auto-generated method stub
-				
+				// Do nothing
 			}
 			
 			@Override
 			public void afterTextChanged(Editable s) {
-				// TODO Auto-generated method stub
-				
+				// Do nothing
 			}
 		});
 	}
